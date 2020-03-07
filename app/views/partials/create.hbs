@@ -1,0 +1,32 @@
+<section class="ui raised segment">
+    <div class="ui grid ">
+        <div class="ui form six wide column">
+            <div class="ui stacked segment">
+                <form action="/create" method="POST">
+                    <div class="field" name="name">
+                        <label>Name:</label>
+                        <input type="text" name="name" placeholder="POI Name">
+                    </div>
+                    <div class="ui dropdown" name="category">
+                        <input type="hidden" name="category">
+                        <div class="text">Select Category</div>
+                        <i class="ui dropdown icon"></i>
+                        <div class="menu">
+                            <div class="item">Venue</div>
+                            <div class="item">Island</div>
+                            <div class="item">National monument</div>
+                        </div>
+                    </div>
+                    <div class="field" name="description">
+                        <label>Description:</label>
+                        <input type="text" name="description" placeholder="Enter Description">
+                    </div>
+                    <button class="ui blue submit button">Create</button>
+                </form>
+            </div>
+        </div>
+        <aside class="six wide column">
+            <img src="images/images.jpg" class="ui medium image">
+        </aside>
+    </div>
+</section>
