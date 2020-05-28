@@ -3,6 +3,7 @@
 const Boom = require('@hapi/boom');
 const Mongoose = require('mongoose');
 const Schema = Mongoose.Schema;
+const bcrypt = require('bcrypt');
 
 const userSchema = new Schema({
     firstName: String,
@@ -16,12 +17,10 @@ userSchema.statics.findByEmail = function(email) {
 };
 
 
-userSchema.methods.comparePassword = function(candidatePassword) {
+userSchema.methods.comparePassword = async function(candidatePassword) {
     const isMatch = this.password === candidatePassword;
-    if (!isMatch) {
-        throw Boom.unauthorized('Password mismatch');
-    }
-    return this;
+    // const isMatch = await bcrypt.compare(candidatePassword, this.password);
+    return isMatch;
 };
 
 

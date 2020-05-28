@@ -5,6 +5,7 @@ const POIs = require('./app/controllers/pois');
 const Admins = require('./app/controllers/admins');
 const Categories = require('./app/controllers/categories');
 
+
 module.exports = [
     { method: 'GET', path: '/', config: Accounts.index },
     { method: 'GET', path: '/signup', config: Accounts.showSignup },
@@ -33,7 +34,7 @@ module.exports = [
     { method: 'GET', path: '/deletePOI/{id}', config: POIs.userDelete },
     { method: 'POST', path: '/uploadImage/{id}', config: POIs.uploadImage },
 
-    { method: 'GET', path: '/categories', config: Categories.home },
+    { method: 'GET', path: '/categories', config: Admins.categories },
     { method: 'POST', path: '/createCategory', config: Categories.create },
     { method: 'GET', path: '/viewCategory/{id}', config: POIs.viewByCategory },
     { method: 'GET', path: '/deleteimage/{poiid}/{imageid}', config: POIs.deleteImage },

@@ -4,19 +4,6 @@ const User = require('../models/user');
 const POI = require('../models/poi');
 
 const Categories = {
-    home: {
-        handler: async function(request, h) {
-            try {
-                const categories = await Category.find().lean();
-                return h.view('categories', {
-                    title: 'View/Create Categories',
-                    categories: categories
-                });
-            }catch(err){
-                return h.view('home', { errors: [{ message: err.message }] });
-            }
-        }
-    },
     create: {
         handler: async function(request, h){
             try {
@@ -31,7 +18,6 @@ const Categories = {
             }
         }
     },
-
 
 }
 

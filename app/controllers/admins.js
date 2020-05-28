@@ -4,6 +4,7 @@ const User = require('../models/user');
 const ImageStore = require('../utils/image-store');
 const Admin = require('../models/admin');
 const Joi = require('@hapi/joi');
+const Category = require('../models/category');
 
 const Admins = {
     home: {
@@ -16,6 +17,19 @@ const Admins = {
                 });
             }catch(err){
                 return h.view('admin', { errors: [{ message: err.message }] });
+            }
+        }
+    },
+    categories: {
+        handler: async function(request, h) {
+            try {
+                const categories = await Category.find().lean();
+                return h.view('categories', {
+                    title: 'View/Create Categories',
+                    categories: categories
+                });
+            }catch(err){
+                return h.view('home', { errors: [{ message: err.message }] });
             }
         }
     },

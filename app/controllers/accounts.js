@@ -3,6 +3,9 @@ const User = require('../models/user');
 const Admin = require('../models/admin');
 const Boom = require('@hapi/boom');
 const Joi = require('@hapi/joi');
+const bcrypt = require('bcrypt');
+const saltRounds = 10;
+
 
 const Accounts = {
     index: {
@@ -44,6 +47,8 @@ const Accounts = {
         handler: async function(request, h) {
             try {
                 const payload = request.payload;
+                const hash = payload.password;
+                // const hash = await bcrypt.hash(payload.password, saltRounds);
                 let user = await User.findByEmail(payload.email);
                 let admin = await Admin.findByEmail(payload.email);
                 if (user || admin) {
@@ -54,7 +59,7 @@ const Accounts = {
                     firstName: payload.firstName,
                     lastName: payload.lastName,
                     email: payload.email,
-                    password: payload.password
+                    password: hash
                 });
                 user = await newUser.save();
                 request.cookieAuth.set({ id: user.id });
@@ -98,14 +103,22 @@ const Accounts = {
                 let user = await User.findByEmail(email);
                 let admin = await Admin.findByEmail(email);
                 if(user){
-                    user.comparePassword(password);
-                    request.cookieAuth.set({ id: user.id });
-                    return h.redirect('/home');
+                    if (!await user.comparePassword(password)) {
+                        const message = 'Password mismatch';
+                        throw Boom.unauthorized(message);
+                    } else {
+                        request.cookieAuth.set({ id: user.id });
+                        return h.redirect('/home');
+                    }
                 }
                 else if(admin){
-                    admin.comparePassword(password);
-                    request.cookieAuth.set({ id: admin.id });
-                    return h.redirect('/admin');
+                    if (!await admin.comparePassword(password)) {
+                        const message = 'Password mismatch';
+                        throw Boom.unauthorized(message);
+                    } else {
+                        request.cookieAuth.set({ id: admin.id });
+                        return h.redirect('/admin');
+                    }
                 }
                 else if (!user && !admin) {
                     const message = 'Email address is not registered';
@@ -171,12 +184,14 @@ const Accounts = {
         handler: async function(request, h) {
             try {
                 const userEdit = request.payload;
+                const hash = payload.password;
+                //const hash = await bcrypt.hash(userEdit.password, saltRounds);
                 const id = request.auth.credentials.id;
                 const user = await User.findById(id);
                 user.firstName = userEdit.firstName;
                 user.lastName = userEdit.lastName;
                 user.email = userEdit.email;
-                user.password = userEdit.password;
+                user.password = hash;
                 await user.save();
                 return h.redirect('/settings');
             } catch (err) {
@@ -210,12 +225,15 @@ const Accounts = {
         handler: async function(request, h) {
             try {
                 const adminEdit = request.payload;
+                const saltRounds =10;
+                const hash = payload.password;
+                //const hash = await bcrypt.hash(adminEdit.password, saltRounds);
                 const id = request.auth.credentials.id;
                 const admin = await Admin.findById(id);
                 admin.firstName = adminEdit.firstName;
                 admin.lastName = adminEdit.lastName;
                 admin.email = adminEdit.email;
-                admin.password = adminEdit.password;
+                admin.password = hash;
                 await admin.save();
                 return h.redirect('/adminsettings');
             } catch (err) {
@@ -250,10 +268,13 @@ const Accounts = {
             try {
                 const user = await User.findById(request.params.id);
                 const userEdit = request.payload;
+                const saltRounds =10;
+                const hash = payload.password;
+                //const hash = await bcrypt.hash(userEdit.password, saltRounds);
                 user.firstName = userEdit.firstName;
                 user.lastName = userEdit.lastName;
                 user.email = userEdit.email;
-                user.password = userEdit.password;
+                user.password = hash;
                 await user.save();
 
                 const user2 = await User.findById(request.params.id).lean();

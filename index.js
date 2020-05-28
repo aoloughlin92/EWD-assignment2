@@ -2,6 +2,7 @@
 
 const Hapi = require('@hapi/hapi');
 const dotenv = require('dotenv');
+const fs = require('fs');
 const ImageStore = require('./app/utils/image-store');
 
 const result = dotenv.config();
@@ -12,6 +13,12 @@ if (result.error) {
 
 const server = Hapi.server({
     port: process.env.PORT || 3000,
+    /*port: 3443,
+    tls: {
+        key: fs.readFileSync('keys/private/webserver.key'),
+        cert: fs.readFileSync('keys/webserver_self.crt')
+    }*/
+    routes: { cors: true }
 });
 
 const credentials = {
@@ -55,6 +62,7 @@ async function init() {
     server.auth.default('session');
 
     server.route(require('./routes'));
+    server.route(require('./routes-api'));
     await server.start();
     console.log(`Server running at: ${server.info.uri}`);
 }
