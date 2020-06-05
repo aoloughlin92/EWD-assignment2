@@ -31,8 +31,15 @@ const ImageStore = {
     },
 
     uploadImage: async function(imagefile) {
+        console.log("IMAGE" + imagefile);
         await writeFile('./public/temp.img', imagefile);
         const response = await cloudinary.uploader.upload('./public/temp.img');
+        return response.public_id;
+    },
+    uploadAPIImage: async function(imagefile) {
+        console.log("here"+imagefile);
+        await writeFile('./public/temp.img', imagefile);
+        const response = await cloudinary.uploader.upload(imagefile);
         return response.public_id;
     },
 

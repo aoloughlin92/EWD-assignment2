@@ -14,7 +14,12 @@ const poiSchema = new Schema({
         type: Schema.Types.ObjectId,
         ref: 'User'
     },
-    images: [String]
+    location:{
+        type: Schema.Types.ObjectId,
+        ref: 'Location'
+    },
+    imageids: [String],
+    imageurls: [String]
 });
 
 poiSchema.statics.findByCreator = function(user) {

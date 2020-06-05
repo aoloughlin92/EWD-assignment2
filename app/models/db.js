@@ -13,6 +13,7 @@ async function seed() {
     const POI = require('./poi.js');
     const Category = require('./category.js');
     const User = require('./user');
+    const Location =require('./location');
     const dbData = await seeder.seed(data, { dropDatabase: false, dropCollections: true });
     //console.log(dbData);
 }

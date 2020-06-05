@@ -2,12 +2,12 @@
 const POI = require('../models/poi');
 const User = require('../models/user');
 const ImageStore = require('../utils/image-store');
-const Category = require('../models/category')
+const Category = require('../models/category');
 
 const POIs = {
     home: {
         handler: async function(request, h) {
-            const categories = await Category.find().lean()
+            const categories = await Category.find().lean();
             return h.view('home', {
                 title: 'Create a Point of Interest',
                 categories: categories
@@ -80,6 +80,23 @@ const POIs = {
             }
         }
     },
+    viewScreen: {
+        handler: async function (request, h) {
+            try{
+                const poi = await POI.findById(request.params.id).populate('category').lean();
+                const images = await ImageStore.getImagesByArray(poi.images);
+                const categories = await Category.find().lean();
+                return h.view('viewpoi', {
+                    title: poi.name,
+                    poi: poi,
+                    images: images,
+                    categories: categories
+                });
+            } catch(err){
+                return h.view('main', {errors: [{message: err.message}]});
+            }
+        }
+    },
     userEdit: {
         handler: async function(request, h){
             try {
@@ -125,7 +142,7 @@ const POIs = {
             try {
                 const user = await User.findById(request.auth.credentials.id);
                 const category = await Category.findById(request.params.id);
-                const pois = await POI.findByCategory(user, category).populate('creator').populate('category').lean()
+                const pois = await POI.findByCategory(user, category).populate('creator').populate('category').lean();
                 return h.view('view', {
                     title: category.name,
                     pois: pois

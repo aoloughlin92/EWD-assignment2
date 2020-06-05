@@ -29,6 +29,7 @@ module.exports = [
     { method: 'POST', path: '/editUser/{id}', config: Accounts.updateUser },
     { method: 'GET', path: '/deleteUser/{id}', config: Accounts.deleteUser },
 
+    { method: 'GET', path: '/viewPOI/{id}', config: POIs.viewScreen },
     { method: 'GET', path: '/editPOI/{id}', config: POIs.editScreen },
     { method: 'POST', path: '/editPOI/{id}', config: POIs.userEdit },
     { method: 'GET', path: '/deletePOI/{id}', config: POIs.userDelete },
