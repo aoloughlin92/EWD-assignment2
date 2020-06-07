@@ -79,7 +79,8 @@ const Users = {
       const newUser = new User(request.payload);
       const user = await newUser.save();
       if (user) {
-        return h.response(user).code(201);
+        const token = utils.createToken(user);
+        return h.response({ success: true, token: token,user:user }).code(201);
       }
       return Boom.badImplementation('error creating user');
     }
