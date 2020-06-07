@@ -68,6 +68,7 @@ async function init() {
         verifyOptions: { algorithms: ['HS256'] },
     });
 
+
     server.auth.default('session');
 
     server.route(require('./routes'));

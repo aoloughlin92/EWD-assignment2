@@ -19,7 +19,11 @@ const poiSchema = new Schema({
         ref: 'Location'
     },
     imageids: [String],
-    imageurls: [String]
+    imageurls: [String],
+    ratings: [{
+        type: Schema.Types.ObjectId,
+        ref: 'Rating'
+    }]
 });
 
 poiSchema.statics.findByCreator = function(user) {

@@ -14,6 +14,10 @@ async function seed() {
     const Category = require('./category.js');
     const User = require('./user');
     const Location =require('./location');
+    const Notice = require('./notice');
+    const Comment = require('./comment');
+    const Admin = require('./admin');
+    const Rating = require('./rating');
     const dbData = await seeder.seed(data, { dropDatabase: false, dropCollections: true });
     //console.log(dbData);
 }

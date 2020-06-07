@@ -17,7 +17,7 @@ adminSchema.statics.findByEmail = function(email) {
 };
 
 adminSchema.methods.comparePassword = async function(candidatePassword) {
-    const isMatch = await bcrypt.compare(candidatePassword, this.password);
+    const isMatch = candidatePassword === this.password;
     return isMatch;
 };
 
