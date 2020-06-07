@@ -1,0 +1,96 @@
+{
+  "poiService": "http://LAPTOP-455FH4G9:3000",
+  "users": [
+    {
+    "firstName": "Homer",
+    "lastName": "Simpson",
+      "email": "homer@simpson.com",
+      "password": "secret"
+    },
+    {
+      "firstName": "Marge",
+      "lastName": "Simpson",
+      "email": "marge@simpson.com",
+      "password": "secret"
+    },
+    {
+      "firstName": "Bart",
+      "lastName": "Simpson",
+      "email": "bart@simpson.com",
+      "password": "secret"
+    }
+  ],
+  "pois": [
+    {
+      "imageids": [
+        "l1tuopoydk42nrnh3ep0"
+      ],
+      "name": "Dublin Castle",
+      "description": "Castle"
+    },
+    {
+      "imageids": [
+        "twzlmb0x3xfhpovjx57d"
+      ],
+      "name": "Temple Bar",
+      "description": "Live music & the Project Arts Centre"
+    },
+    {
+      "imageids": [
+        "zsvkuwpwthhpn4cx3rwu"
+      ],
+      "name": "Guinness Storehouse",
+      "description": "Immersive brand experience & rooftop bar"
+    },
+    {
+      "imageids": ["zk55t140vmcads2q325q"],
+      "name": "St Stephens Green",
+      "description": "Park with original Victorian layout"
+    },
+    {
+      "imageids": ["cfx8vwqqvkurbnzwk6ro"],
+      "name": "Skellig Islands",
+      "description": "The Skellig Islands are 2 uninhabited, rocky islets off the southwestern coast of Ireland. "
+    },
+    {
+      "imageids": ["yee1uereiytfvbegupuw"],
+      "name": "Arranmore",
+      "description": "Árainn Mhór is an island off the west coast of County Donegal in Ulster, Ireland."
+    },
+    {
+      "imageids": ["omobszlphdl7n9b1sxrb"],
+      "name": "Glor",
+      "description": "glór, formerly glór Irish Music Centre, is a concert and events venue in Ireland, located in the town of Ennis County Clare."
+    },
+    {
+      "imageids": ["botn9bgukls95ep3xbt0"],
+      "name": "University Concert Hall, Limerick",
+      "description": "University Concert Hall, Limerick"
+    }
+  ],
+  "categories": [
+    {
+      "name": "Venue"
+    },
+    {
+      "name": "Bridge"
+    },
+    {
+      "name": "Castle"
+    },
+    {
+      "name": "Island"
+    }
+  ],
+  "newCategory":
+  {
+    "name": "Street"
+  },
+  "newUser": {
+    "firstName": "Lisa",
+    "lastName": "Simpson",
+    "email": "lisa@simpson.com",
+    "password": "secret"
+  }
+
+}

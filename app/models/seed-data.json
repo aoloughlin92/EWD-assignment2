@@ -1,0 +1,236 @@
+{
+  "locations": {
+    "_model": "Location",
+    "first": {
+      "lng": -6.267498,
+      "lat": 53.342995
+    },
+    "second": {
+      "lng": -6.264272,
+      "lat":  53.345534
+    },
+    "third": {
+      "lng": -6.288167,
+      "lat": 53.345338
+    },
+    "fourth": {
+      "lng": -6.2603672,
+      "lat": 53.3394239
+    },
+    "fifth": {
+      "lng": -6.267498,
+      "lat": 53.342995
+    },
+    "sixth": {
+      "lng": -10.5394587,
+      "lat": 51.7717786
+    },
+    "seventh": {
+      "lng": -8.9792847,
+      "lat": 52.8447039
+    },
+    "eighth": {
+      "lng": -8.5759232,
+      "lat": 52.6744954
+    }
+  },
+  "admins": {
+    "_model": "Admin",
+    "maggie": {
+      "firstName": "Maggie",
+      "lastName": "Simpson",
+      "email": "maggie@simpson.com",
+      "password": "secret"
+    }
+  },
+  "categories": {
+    "_model": "Category",
+    "venue": {
+      "name": "Venue"
+    },
+    "island": {
+      "name": "Island"
+    },
+    "castle": {
+      "name": "Castle"
+    },
+    "bridge": {
+      "name": "Bridge"
+    }
+  },
+  "users": {
+    "_model": "User",
+    "homer": {
+      "firstName": "Homer",
+      "lastName": "Simpson",
+      "email": "homer@simpson.com",
+      "password": "secret"
+    },
+    "marge":{
+      "firstName": "Marge",
+      "lastName": "Simpson",
+      "email": "marge@simpson.com",
+      "password": "secret"
+    },
+    "bart": {
+      "firstName": "Bart",
+      "lastName": "Simpson",
+      "email": "bart@simpson.com",
+      "password": "secret"
+    }
+  },
+  "comments": {
+    "_model": "Comment",
+    "one": {
+      "comment":"Doh!!",
+      "commenter": "->users.homer"
+    },
+    "two": {
+      "comment":"Oh No!! Was hoping to visit this weekend.",
+      "commenter": "->users.marge"
+    },
+    "three": {
+      "comment": "Great Really looking forward to it!!",
+      "commenter": "->users.bart"
+    }
+
+  },
+  "notices": {
+    "_model": "Notice",
+    "first": {
+      "heading":"Wind Warning at the Cliffs of Moher",
+      "body": "The cliffs of moher are experiencing higher wind levels than usual. All visitors are advised to avoid the area.",
+      "user": "->users.bart",
+      "comments": [
+        "->comments.one",
+        "->comments.two"
+      ]
+    },
+    "second": {
+      "heading":"Great day to visit Dublin Castle",
+      "body":  "Dublin castle are holding their annual open day today. Free admission to all areas.",
+      "user": "->users.marge",
+      "comments": [
+        "->comments.three"
+      ]
+    },
+    "third": {
+      "heading": "Irish music in Temple Bar",
+      "body": "There will be plenty of live Irish music tonight in Temple Bar. Not to be missed!!",
+      "user": "->users.homer",
+      "comments": []
+    }
+  },
+  "ratings": {
+    "_model": "Rating",
+    "rate1": {
+      "rating": 5,
+      "review": "Great spot!",
+      "reviewer": "->users.bart"
+
+    },
+    "rate2":{
+      "rating": 3,
+      "review": "Fun for all the family!",
+      "reviewer": "->users.marge"
+    },
+    "rate3":{
+      "rating": 2,
+      "review": "Terrible experience!",
+      "reviewer": "->users.homer"
+    }
+  },
+  "pois": {
+    "_model": "POI",
+    "dubcastle": {
+      "imageids": [
+        "l1tuopoydk42nrnh3ep0"
+      ],
+      "imageurls": ["https://res.cloudinary.com/dc1jyvek3/image/upload/v1583685166/l1tuopoydk42nrnh3ep0.jpg"],
+      "name": "Dublin Castle",
+      "category": "->categories.castle",
+      "description": "Castle",
+      "creator": "->users.bart",
+      "location": "->locations.first",
+      "ratings": [
+        "->ratings.rate1",
+        "->ratings.rate2",
+        "->ratings.rate3"
+      ]
+  },
+    "templebar": {
+      "imageids": [
+        "twzlmb0x3xfhpovjx57d"
+      ],
+      "imageurls": ["https://res.cloudinary.com/dc1jyvek3/image/upload/v1583685680/twzlmb0x3xfhpovjx57d.jpg"],
+      "name": "Temple Bar",
+      "category": "->categories.venue",
+      "description": "Live music & the Project Arts Centre",
+      "creator": "->users.marge",
+      "location": "->locations.second",
+      "ratings": []
+    },
+    "guinness": {
+      "imageids": [
+        "zsvkuwpwthhpn4cx3rwu"
+      ],
+      "imageurls": ["https://res.cloudinary.com/dc1jyvek3/image/upload/v1583685746/zsvkuwpwthhpn4cx3rwu.jpg"],
+      "name": "Guinness Storehouse",
+      "category": "->categories.venue",
+      "description": "Immersive brand experience & rooftop bar",
+      "creator": "->users.bart",
+      "location": "->locations.third",
+      "ratings": []
+    },
+    "ststephens": {
+      "imageids": ["zk55t140vmcads2q325q"],
+      "imageurls": ["https://res.cloudinary.com/dc1jyvek3/image/upload/v1583685871/zk55t140vmcads2q325q.jpg"],
+      "name": "St Stephens Green",
+      "category": "->categories.venue",
+      "description": "Park with original Victorian layout",
+      "creator": "->users.marge",
+      "location": "->locations.fourth",
+      "ratings": []
+    },
+    "skellig": {
+      "imageids": ["cfx8vwqqvkurbnzwk6ro"],
+      "imageurls": ["https://res.cloudinary.com/dc1jyvek3/image/upload/v1583685969/cfx8vwqqvkurbnzwk6ro.jpg"],
+      "name": "Skellig Islands",
+      "category": "->categories.island",
+      "description": "The Skellig Islands are 2 uninhabited, rocky islets off the southwestern coast of Ireland. ",
+      "creator": "->users.bart",
+      "location": "->locations.fifth",
+      "ratings": []
+    },
+    "arranmore": {
+      "imageids": ["yee1uereiytfvbegupuw"],
+      "imageurls": ["https://res.cloudinary.com/dc1jyvek3/image/upload/v1583686138/yee1uereiytfvbegupuw.jpg"],
+      "name": "Arranmore",
+      "category": "->categories.island",
+      "description": "Árainn Mhór is an island off the west coast of County Donegal in Ulster, Ireland.",
+      "creator": "->users.marge",
+      "location": "->locations.sixth",
+      "ratings": []
+    },
+    "glor": {
+      "imageids": ["omobszlphdl7n9b1sxrb"],
+      "imageurls": ["https://res.cloudinary.com/dc1jyvek3/image/upload/v1583686316/omobszlphdl7n9b1sxrb.jpg"],
+      "name": "Glor",
+      "category": "->categories.venue",
+      "description": "glór, formerly glór Irish Music Centre, is a concert and events venue in Ireland, located in the town of Ennis County Clare.",
+      "creator": "->users.bart",
+      "location": "->locations.seventh",
+      "ratings": []
+    },
+    "uch": {
+      "imageids": ["botn9bgukls95ep3xbt0"],
+      "imageurls": ["https://res.cloudinary.com/dc1jyvek3/image/upload/v1583686374/botn9bgukls95ep3xbt0.jpg"],
+      "name": "University Concert Hall, Limerick",
+      "category": "->categories.venue",
+      "description": "University Concert Hall, Limerick",
+      "creator": "->users.marge",
+      "location": "->locations.eighth",
+      "ratings": []
+    }
+  }
+}

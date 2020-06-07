@@ -1,0 +1,28 @@
+{{> mainmenu _id="home" }}
+
+<section class="ui raised segment">
+    <div class="ui grid">
+        <div class="ui ten wide column">
+            <div class="ui stacked fluid form segment">
+                <h3 class="ui header">{{poi.name}}</h3>
+                <div>{{poi.description}}
+                </div>
+                <div>
+                    <h4>
+                        Category: {{poi.category.name}}
+                    </h4>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+{{#each images}}
+    <div>
+        <div class="uk-card uk-card-default uk-card-small uk-text-center uk-text-baseline uk-animation-scale-up">
+            <div class="uk-card-media-top">
+                <img class="ui medium image" src="{{url}}">
+                <a href="/deleteimage/{{../poi._id}}/{{public_id}}"  class="ui icon button"> <i class="icon trash"></i></a>
+            </div>
+        </div>
+    </div>
+{{/each}}
